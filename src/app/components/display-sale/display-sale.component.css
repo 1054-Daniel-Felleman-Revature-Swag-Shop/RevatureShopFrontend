@@ -1,0 +1,294 @@
+
+.inStockItem {
+    color:black;
+}
+
+.outOfStockItem {
+    color: rgb(190, 190, 190);
+
+}
+
+.outOfStockItem img {
+    opacity: 0.3;
+}
+.title-and-inventory-grid {
+
+    display: flex;
+    flex-direction: column;
+
+    /* min and max width */
+    max-width: 1235px;
+    min-width: 342px;
+
+    /* Margins */
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 100px;
+
+}
+
+.searchBar input{
+  display: flex;
+  justify-content: right;
+  
+}
+
+.title-and-inventory-grid {
+
+    width: 1235px;
+
+}
+
+@media only screen and (max-width: 1430px) {
+.title-and-inventory-grid {
+
+
+    width: 880px;
+
+
+}
+}
+
+@media only screen and (max-width: 1075px) {
+    .title-and-inventory-grid {
+
+
+        width: 605px;
+
+
+}
+}
+
+@media only screen and (max-width: 680px) {
+    .title-and-inventory-grid {
+
+
+        width: 340px;
+
+
+}
+}
+
+
+
+
+.inventoryTitle {
+
+    font-size: 34px;
+    margin-left: 25px;
+    flex-grow: 1;
+
+
+
+
+}
+
+.filtersAndTitle {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items:center;
+
+    margin-left: 2px;
+    margin-right: 10px;
+
+    margin-bottom: 0px;
+
+
+
+
+
+}
+
+@media only screen and (max-width: 680px) {
+    .filtersAndTitle {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-right: 10px;
+
+        margin-bottom: 8px;
+
+    }
+}
+.inventory-grid {
+
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  justify-content:center;
+
+  /*display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px, 1fr));*/
+  margin-top: 5px;
+
+}
+
+.inventory-grid > div {
+
+  margin: 1.2%;
+  border-style: none;
+  border-width: 1px;
+  border-radius: 0.20em;
+  border-color: rgb(95, 95, 95);
+  background-color: rgb(244, 247, 253);
+  width: 270px;
+  height:405px;
+  text-overflow: ellipsis;
+  text-align: center;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 1px 2px 11px rgba(116, 116, 116, 0.3);
+  overflow: hidden;
+
+}
+.inventory-grid > div img {
+    text-align: center;
+    max-width: 100%;
+    height: 250px;
+    object-fit:cover;
+    margin-top: 0px;
+}
+/* TRANSLUSCENT MASK OVER THE IMAGE
+      MAKE IT THE SAME DIMENSIONS AS THE IMG ABOVE */
+.inventory-grid > div .mask{
+        width: 276px;
+        height: 250px;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+}
+
+/*
+Moible devices
+*/
+@media only screen and (max-width: 680px) {
+    .inventory-grid > div {
+        width: 340px;
+        height:425px;
+        margin-top: 5.2%;
+    }
+    .inventory-grid > div img {
+        text-align: center;
+        max-width: 100%;
+        height: 250px;
+        object-fit:cover;
+        margin-top: 0px
+    }
+
+    /* TRANSLUSCENT MASK OVER THE IMAGE
+      MAKE IT THE SAME DIMENSIONS AS THE IMG ABOVE */
+    .inventory-grid > div .mask{
+        width: 340px;
+        height: 250px;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+    }
+
+}
+
+
+
+
+/* Card Hover Styling */
+
+.inventory-grid>div img {
+    transition: all 0.2s linear;
+}
+.inventory-grid>div:hover img {
+	transform: scale(1.07);
+}
+
+
+
+.inventory-grid>div .mask {
+    opacity: 0;
+    background-color: rgba(255, 115, 0, 0.959);
+    transition: all 0.2s linear;
+}
+.inventory-grid > div .mask:hover {
+	opacity: 0.2;
+}
+
+
+
+
+.one-line-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+ }
+
+ .two-line-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+
+    width: 94%;
+    margin: 0 auto;
+ }
+
+
+ .form-check-input {
+
+    border-radius: 10%;
+    border-color: rgb(40, 49, 173);
+
+
+}
+ .form-check-input:checked {
+
+    border-color: rgb(40, 49, 173);
+
+}
+ .form-check-input:focus {
+
+
+     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 1px rgb(110, 110, 110);
+
+ }
+
+ /*
+ PAGINATION STYLING
+ */
+
+
+ ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgb(255,255,255) !important;
+    outline-color: black !important;
+
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: rgb(245, 90, 0) !important;
+    border-color: rgb(245, 90, 0) !important;
+    outline-color: black !important;
+
+    border-color: #464646;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 0px rgb(110, 110, 110);
+}
+
+
+ngb-pagination  ngb-template ::ng-deep a.active {
+    background-color: rgb(245, 90, 0) !important;
+    border-color: rgb(245, 90, 0) !important;
+    outline-color: black !important;
+
+    border-color: #464646;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 0px rgb(110, 110, 110);
+}
+
+ngb-pagination {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}

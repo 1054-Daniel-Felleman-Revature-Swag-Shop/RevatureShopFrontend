@@ -1,1 +1,46 @@
-<p>display-featured works!</p>
+<div class="inventoryTitle">
+
+    {{categoryOfItems}}
+
+</div>
+
+<div class="inventory-grid" style="margin-top: 20px;" >
+
+
+    <div *ngFor="let item of this.inventoryItemsFiltered  | slice: pageSize | slice: 0:itemsPerPage | filter: searchText"
+     class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
+     [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity == 0}">
+
+        <div class="imageContainer" style="overflow: hidden;">
+          <img class="card-img-top" src = "{{itemImagesURL+'/'+item.id}}" alt="Item image">
+        </div>
+
+        <!-- Mask applied over image when hovered over-->
+        <div class="mask"></div>
+
+
+        <div class="card-body" style="text-align: center;">
+
+
+            <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
+            <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
+            <h6 class="card-text sale">{{item.discount * 100}} % Off !</h6>
+
+        </div>
+        <!-- <app-item-modal [title]="item.itemName" [src]="item.imageURL" [description]="item.description"></app-item-modal> -->
+    </div>
+
+</div>
+
+
+<ngb-pagination [collectionSize]="this.inventoryItemsService.inventoryItems.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)">
+<ng-template ngbPaginationPrevious>Prev</ng-template>
+<ng-template ngbPaginationNext>Next</ng-template>
+</ngb-pagination>
+
+
+<app-item-modal [title]="this.selectedItem.itemName" [src]="this.selectedItem.imageURL"
+[description]="this.selectedItem.description" [quantity]="this.selectedItem.quantity" [id]="this.selectedItem.id"></app-item-modal>
+
+<br>
+<br>
