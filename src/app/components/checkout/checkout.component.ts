@@ -46,16 +46,18 @@ export class CheckoutComponent {
             "myShopper": "",
             stockItemMap: {}
         }
+        let price:number=0;
         this.cs.getCart(this.loggedShopper).subscribe(cart=>{
             this.checkoutCart=cart;
             Object.keys(this.checkoutCart.stockItemMap).map(Number).forEach((id) => {
-                let price:number=0;
-                this.cs.getItemById(id).subscribe((item) => {                    
+
+                this.cs.getItemById(id).subscribe((item) => {
                     item.imageURL="";
                     // @ts-ignore
-                    price += item.itemPrice * this.checkoutCart.stockItemMap[item.id];
+                    price += item.itemPrice*(1- item.discount) * this.checkoutCart.stockItemMap[item.id];
                     this.pointsAfterMath=<number>this.as.account?.points-price;
                 });
+
         });
     });
     }
