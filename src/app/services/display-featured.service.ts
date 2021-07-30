@@ -22,18 +22,9 @@ export class DisplayFeaturedService {
 
   }
 
-  getAllInventoryItems() : Observable<InventoryItem[]> {
+  getInventoryItemsByFeatured() : Observable<InventoryItem[]> {
 
-     //var userLoginDTO = {"email": "dude", "password": "cool"};
-
-     var items: Observable<InventoryItem[]> =  this.http.get<InventoryItem[]>(this.baseServerURL + "/api/inventory/view", this.httpOptionsJSON);
-     return items;
-
-  }
-
-  getInventoryItemsByCategory(category: string) : Observable<InventoryItem[]> {
-
-     var items: Observable<InventoryItem[]> =  this.http.post<InventoryItem[]>(this.baseServerURL + "/api/inventory/view/itemsbycategory", category,  this.httpOptionsTEXT);
+     var items: Observable<InventoryItem[]> =  this.http.get<InventoryItem[]>(this.baseServerURL + "/api/inventory/view/getfeatured", this.httpOptionsJSON);
      return items;
 
   }

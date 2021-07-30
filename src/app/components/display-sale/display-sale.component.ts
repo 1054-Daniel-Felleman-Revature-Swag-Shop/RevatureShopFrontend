@@ -36,7 +36,7 @@ export class DisplaySaleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.fetchsaleItemListByCategory("xxx");
+    this.fetchsaleItemListByCategory();
   }
 
 
@@ -44,25 +44,14 @@ export class DisplaySaleComponent implements OnInit {
     return this._saleItemsService;
   }
 
-  fetchsaleItemListByCategory(category: string) {
+  fetchsaleItemListByCategory() {
 
-    if (category == 'on-sale') {
-
-      this.displaySaleService.getInventoryItemsByCategory( category.toString() ).subscribe(
-
-        itemsList => {
-          this.saleItemsService.inventoryItems = itemsList;
-          this.filtersaleListByStock();
-        }
-      )
-
-    }
-    else{
-        this.displaySaleService.getAllInventoryItems().subscribe(itemsList=>{
-            this.saleItemsService.inventoryItems = itemsList;
-            this.filtersaleListByStock();
-        });
-    }
+    this.displaySaleService.getInventoryItemsByOnSale().subscribe(
+      itemsList => {
+        this.saleItemsService.inventoryItems = itemsList;
+        this.filtersaleListByStock();
+      }
+    )
   }
 
   saleitemClicked(selectedItem : InventoryItem) {

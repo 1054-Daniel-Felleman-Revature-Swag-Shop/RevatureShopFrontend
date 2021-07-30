@@ -15,9 +15,7 @@ export class ItemModalComponent implements OnInit {
     @Input() id: number = 0;
     @Input() category: string = '';
     selectedSize: string = '';
-    quantity_small: number = 0;
-    quantity_medium: number = 0;
-    quantity_large: number = 0;
+    selectedAmount: number = 1;
 
     itemImagesURL: string = "https://rss-images.s3.us-east-2.amazonaws.com";
     loggedShopper: string = '';
@@ -34,7 +32,7 @@ export class ItemModalComponent implements OnInit {
 
     addToCart(): void {
         this.httpItemModalService.getItemById(this.id).subscribe((item) => {
-            this.httpItemModalService.addItemToCart(item, this.loggedShopper);
+            this.httpItemModalService.addItemToCart(item, this.loggedShopper, Math.floor(this.selectedAmount));
         });
 
         let btnRapp = document.getElementById("btnRapper");
@@ -64,6 +62,7 @@ export class ItemModalComponent implements OnInit {
         if (customAlert) {
             customAlert.style.display = 'none';
         }
+        this.selectedAmount = 1;
     }
 
     updateSize() {
@@ -71,5 +70,11 @@ export class ItemModalComponent implements OnInit {
             this.id = item.id;
             this.quantity = item.quantity;
         });
+    }
+
+    checkAmount() {
+        if (this.selectedAmount < 1) {
+            this.selectedAmount = 1;
+        }
     }
 }

@@ -32,19 +32,19 @@ export class HttpItemModalService {
         return this.http.get<InventoryItem>("http://" + window.location.hostname + ":9001/inventoryms/api/inventory/get/item/id?id=" + id);
     }
 
-    addItemToCart(item: InventoryItem, username: string) {
+    addItemToCart(item: InventoryItem, username: string, amount: number) {
         const itemDto = JSON.stringify({
             "myshopper": username,
             "id": item.id,
             "itemName": item.itemName,
             "itemPrice": item.itemPrice,
-            "cartQuantity": 1,
+            "cartQuantity": amount,
             "category": item.category,
             "description": item.description,
         });
 
         this.http.put("http://" + window.location.hostname + ":9001/commercems/commerce/addtocart", itemDto, this.httpOptionsJSON).subscribe(() => {
-            this.cs.totalItems++
+            this.cs.totalItems += amount;
         });
     }
 }

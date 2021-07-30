@@ -20,6 +20,10 @@
                         <option>Large</option>
                     </select>
                 </div>
+                <div>
+                    <span class="a-dropdown-label">Quantity: </span>
+                    <input class="quantity" type="number" min="1" max="99" [(ngModel)]="selectedAmount" (change)="checkAmount()">
+                </div>
             </div>
             <div class="modal-footer">
                 <div class="row">

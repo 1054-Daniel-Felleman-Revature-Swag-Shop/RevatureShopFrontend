@@ -82,6 +82,7 @@ export class CartComponent implements OnInit {
     updateCartQuantity(event: Event, id: number): void {
         if (this.hasKey(this.userCart.stockItemMap, id)) {
             // @ts-ignore
+
             this.userCart.stockItemMap[id] = event.target.value;
             this.updatePrice();
         }

@@ -1,3 +1,5 @@
+<div class="featured-title-and-inventory-grid" name="featured">
+
 <div class="featuredTitle">
 
     {{featuredcategoryOfItems}}
@@ -9,7 +11,7 @@
 
     <div *ngFor="let item of this.featuredItemsFiltered  | slice: featuredpageSize | slice: 0: featureditemsPerPage | filter: featuredsearchText"
      class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="featureditemClicked(item)"
-     [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity == 0}">
+     [ngClass]="{'inStockItem' : item.quantity > 0}">
 
         <div class="imageContainer" style="overflow: hidden;">
             <img class="card-img-top" src = "{{featureditemImagesURL+'/'+item.id}}" alt="Item image">
@@ -37,10 +39,10 @@
 <ng-template ngbPaginationPrevious>Prev</ng-template>
 <ng-template ngbPaginationNext>Next</ng-template>
 </ngb-pagination>
-
+</div>
 
 <app-item-modal [title]="this.featuredselectedItem.itemName" [src]="this.featuredselectedItem.imageURL"
-[description]="this.featuredselectedItem.description" [quantity]="this.featuredselectedItem.quantity" [id]="this.featuredselectedItem.id"></app-item-modal>
+[description]="this.featuredselectedItem.description" [quantity]="this.featuredselectedItem.quantity" [id]="this.featuredselectedItem.id" [category]="this.featuredselectedItem.category"></app-item-modal>
 
 <br>
 <br>

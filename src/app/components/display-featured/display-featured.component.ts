@@ -36,7 +36,7 @@ export class DisplayFeaturedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.fetchfeaturedItemListByCategory("xxx");
+    this.fetchfeaturedItemListByCategory();
   }
 
 
@@ -44,25 +44,14 @@ export class DisplayFeaturedComponent implements OnInit {
     return this._featuredItemsService;
   }
 
-  fetchfeaturedItemListByCategory(category: string) {
+  fetchfeaturedItemListByCategory() {
 
-    if (category == 'featured') {
-
-      this.displayFeaturedService.getInventoryItemsByCategory( category.toString() ).subscribe(
-
-        itemsList => {
-          this.featuredItemsService.inventoryItems = itemsList;
-          this.filterfeaturedListByStock();
-        }
-      )
-
-    }
-    else{
-        this.displayFeaturedService.getAllInventoryItems().subscribe(itemsList=>{
-            this.featuredItemsService.inventoryItems = itemsList;
-            this.filterfeaturedListByStock();
-        });
-    }
+    this.displayFeaturedService.getInventoryItemsByFeatured().subscribe(
+      itemsList => {
+        this.featuredItemsService.inventoryItems = itemsList;
+        this.filterfeaturedListByStock();
+      }
+    )
   }
 
   featureditemClicked(selectedItem : InventoryItem) {

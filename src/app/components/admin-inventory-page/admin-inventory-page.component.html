@@ -73,6 +73,8 @@
                         <div type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)">
                             <h5 class="card-title title one-line-text">{{item.itemName}}</h5>
                             <h6 class="card-title title one-line-text">Category: {{item.category}}</h6>
+                            <h6 *ngIf="item.category == 'Unisex Shirt' || item.category == 'Men\'s Shirt' || item.category == 'Women\'s Shirt'" class="card-title title one-line-text">Size: {{item.size}}</h6>
+                            
                             <h6 class="card-text price" >{{item.itemPrice*(1-item.discount)}} Points</h6>
 
                             <h6 class="card-text model" *ngIf="item.category == 'Unisex Shirt' || item.category == 'Men\'s Shirt' || item.category == 'Women\'s Shirt'">Size: {{item.size}}</h6>
