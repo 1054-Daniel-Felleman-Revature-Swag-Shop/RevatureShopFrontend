@@ -67,7 +67,6 @@ export class DisplayFeaturedComponent implements OnInit {
 
   }
 
-
   public featuredonPageChange(pageNum: number): void {
     this.featuredpageSize = this.featureditemsPerPage*(pageNum - 1);
   }

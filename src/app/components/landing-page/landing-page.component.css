@@ -1,10 +1,162 @@
-.jumbotron {
-    min-height: 350px;
-    background-color: rgb(248, 112, 21);
-    color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
+.wrapper{
+    min-height: 90%;
+    width: 100%;
+    left: 0;
+    padding: 0;
 }
+
+.page-header {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5) ), url('../../../assets/images/business-success.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    max-height: 999px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .page-header.page-header-small {
+    min-height: 65vh !important;
+    max-height: 700px;
+  }
+  .page-header.page-header-xs {
+    min-height: 40vh !important;
+  }
+  .page-header.section-dark .content-center,
+  .page-header.section-dark .category-absolute {
+    z-index: 1;
+  }
+
+  .banner {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: #F26925;
+      height: 25vh;
+      width: 100%;
+      margin-top: 200px;
+      padding: 30px;
+  }
+
+  .title {
+      font-size: 3em;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px #474C55;
+  }
+
+  .message {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    width: 50%;
+    margin-top: 15px;
+  }
+
+  .message span {
+      font-weight: bold;
+      font-size: 1.4em;
+      text-shadow: 2px 2px #474C55;
+  }
+
+  .carousel-control {
+    background-color: #F26925;
+    border-radius: 50%;
+    opacity: 1;
+    text-shadow: none;
+  }
+  .carousel-control:hover, .carousel-control:focus {
+    opacity: 1;
+    background-color: #F26925;
+  }
+  
+  .carousel-control.left {
+    height: 30px;
+    top: 48%;
+    width: 30px;
+    left: 20px;
+    opacity: 0;
+    background-color: #F26925;
+  }
+  
+  .carousel-control.right {
+    height: 30px;
+    right: 20px;
+    top: 48%;
+    width: 30px;
+    opacity: 0;
+    background-color: #F26925;
+  }
+  
+  .carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .fa{
+    display: inline-block;
+    z-index: 5;
+  }
+  
+  .carousel-control-prev .fa {
+    font-size: 26px;
+    margin: 2px;
+    padding-right: 3px;
+    background-color: #F26925;
+  }
+  
+  .carousel-control-next .fa {
+    font-size: 26px;
+    margin: 2px;
+    padding-left: 3px;
+    background-color: #F26925;
+  }
+  
+  .carousel-control.left, .carousel-control.right {
+    background-image: none;
+  }
+
+  .page-carousel {
+    border-radius: 12px !important;
+    border: none !important;
+    background-color: #B9B9BA;
+  }
+  
+  .carousel-inner .carousel-item img {
+    border-radius: 12px;
+    box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+    height: 400px;
+    width: 100%;
+  }
+  
+  .carousel-indicators {
+    bottom: 0px;
+  }
+  
+  .carousel-indicators li {
+    background-color: #F26925;
+    border: 0 none;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #F26925;
+  }
+
+  
+  .page-carousel:hover .carousel-control.right,
+  .page-carousel:hover .carousel-control.left {
+    opacity: 1;
+  }
+
+  .image-holder{
+  padding: 20px 80px;
+  width: 100%;
+  }
+
+  .image{
+    max-width: 100%;
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+  }

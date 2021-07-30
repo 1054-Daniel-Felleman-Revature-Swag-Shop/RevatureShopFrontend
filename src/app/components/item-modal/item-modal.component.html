@@ -12,7 +12,7 @@
                         " alt="no image"></div>
                     <div class="col-md-6">{{description}}</div>
                 </div>
-                <div *ngIf="category == 'Unisex Shirt' || category == 'Men\'s Shirt' || category == 'Women\'s Shirt'" >
+                <div *ngIf="category === 'Unisex Shirt' || category === 'Men\'s Shirt' || category === 'Women\'s Shirt'" >
                     <select class='form-control' [(ngModel)]="selectedSize" (change)="updateSize()">
                         <option value="" selected disabled>Select a size</option>
                         <option>Small</option>
