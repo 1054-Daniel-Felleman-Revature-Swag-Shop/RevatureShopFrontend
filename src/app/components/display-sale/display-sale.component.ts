@@ -10,8 +10,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   styleUrls: ['./display-sale.component.css']
 })
 export class DisplaySaleComponent implements OnInit {
-
-  saleitemImagesURL : string = "https://revature-swag-shop-images.s3.us-east-2.amazonaws.com";
+  itemImagesURL: string = "https://rss-images.s3.us-east-2.amazonaws.com"
 
   salecategoryOfItems : string = 'On Sale';
   saleItemsFiltered : InventoryItem[] = [];

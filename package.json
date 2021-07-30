@@ -30,6 +30,8 @@
     "ngx-material-file-input": "^2.1.1",
     "ngx-pagination": "^5.1.1",
     "popper.js": "^1.16.1",
+    "primeicons": "^4.1.0",
+    "primeng": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
