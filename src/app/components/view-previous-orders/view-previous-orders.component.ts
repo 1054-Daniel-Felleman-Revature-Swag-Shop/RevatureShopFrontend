@@ -18,8 +18,7 @@ export class ViewPreviousOrdersComponent implements OnInit {
   previousOrders: any;
   itemId: number = 0;
   itemName: string = '';
-  itemImagesURL: string = "https://revature-swag-shop-images.s3.us-east-2.amazonaws.com";
-  shirtImageURL: string = "https://rss-images.s3.us-east-2.amazonaws.com/images/";
+  itemImagesURL: string = "https://rss-images.s3.us-east-2.amazonaws.com/images/";
 
   ngOnInit(): void {
     this.setEmail();
@@ -43,7 +42,6 @@ export class ViewPreviousOrdersComponent implements OnInit {
     this.httpCartService.orderHistory(this.email).subscribe(
       data => {
         this.previousOrders = data;
-        console.log(this.previousOrders);
 
 
         for (let i = 0; i < data.length; i++) {
