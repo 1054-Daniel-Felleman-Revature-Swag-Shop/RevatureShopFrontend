@@ -39,6 +39,9 @@ Carts can be accessed and edited, or users can proceed to checkout.
 The User can also check their points history from the "My accounts" page.
 ![My Accounts](./src/assets/images/UserPointsHistory.png)
 
+The user can also check their previous orders from the "View Previous Orders" page.
+![Previous Orders](./src/assets/images/viewPreviousOrders.png)
+
 ## Using the Swag shop as an Admin
 
 ### Additional Admin Functions
