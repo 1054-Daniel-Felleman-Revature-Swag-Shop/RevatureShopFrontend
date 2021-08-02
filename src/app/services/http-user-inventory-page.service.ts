@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie';
 import { Observable } from 'rxjs';
 import { InventoryItem } from 'src/app/services/inventory-items.service';
 
@@ -12,13 +13,13 @@ export class HttpUserInventoryPageService {
 
    baseServerURL = "http://" + window.location.hostname + ":9001/inventoryms/";
 
-  httpHeadersJSON: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  httpHeadersJSON: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'email': this.cookies.get('email')});
   httpHeadersTEXT: HttpHeaders = new HttpHeaders({'Content-Type': 'application/text'});
   httpOptionsJSON = { headers: this.httpHeadersJSON, withCredentials: true };
   httpOptionsTEXT = { headers: this.httpHeadersTEXT, withCredentials: true };
 
 
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient, private cookies: CookieService) {
 
    }
 

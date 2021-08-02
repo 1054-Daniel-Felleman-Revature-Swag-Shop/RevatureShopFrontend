@@ -1,4 +1,9 @@
-card{
+card {
     align-content: center;
     justify-content: center;
+}
+
+.orange {
+    color: white;
+    background-color: #F26925;
 }
