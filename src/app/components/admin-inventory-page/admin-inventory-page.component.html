@@ -19,7 +19,6 @@
           <option value="name asc">Item name (A to Z)</option>
           <option value="name desc">Item name (Z to A)</option>
       </select>
-
           <div style="display: flex; flex-direction: row-reverse;">
             <div class="form-check" style="margin-right: 20px; margin-left: 12px;">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="outOfStockChecked" (change)="outOfStockChecked = !outOfStockChecked; applyAllFiltering();">

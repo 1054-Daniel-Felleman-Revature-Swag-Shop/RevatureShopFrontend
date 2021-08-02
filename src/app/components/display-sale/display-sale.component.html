@@ -1,45 +1,30 @@
-<div class="saleTitle">
-
-    {{salecategoryOfItems}}
-
+<div class="banner">
+    <h1 class="title">Items on Sale</h1>
+    <p class="message">Check out our awesome items!</p>
+    <p-carousel [value]="saleItemsFiltered" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+        [circular]="true" [autoplayInterval]="5000">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <ng-template let-sale pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <div class="discount">
+                            {{sale.discount | percent}}
+                        </div>
+                        <img src="{{itemImagesURL+'/images/'+sale.itemName+'.png'}}" [alt]="sale.itemName"
+                            class="product-image" />
+                    </div>
+                    <div class="item-wrapper">
+                        <h4 class="p-mb-1">{{sale.itemName}}</h4>
+                        <span class="price-wrapper">
+                            <h6 class="p-mt-0 p-mb-3 price">{{sale.itemPrice}}</h6>
+                            <h6 class="p-mt-0 p-mb-3">{{sale.itemPrice * (1-sale.discount)|number}} RevCoins
+                            </h6>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
 </div>
-
-<div class="sale-grid" style="margin-top: 20px;" >
-
-
-    <div *ngFor="let item of this.saleItemsFiltered  | slice: salepageSize | slice: 0: saleitemsPerPage | filter: salesearchText"
-        class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="saleitemClicked(item)"
-        [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity == 0}">
-
-        <div class="imageContainer" style="overflow: hidden;">
-            <img class="card-img-top" src = "{{saleitemImagesURL+'/'+item.id}}" alt="Item image">
-        </div>
-
-        <!-- Mask applied over image when hovered over-->
-        <div class="mask"></div>
-
-
-        <div class="card-body" style="text-align: center;">
-
-
-            <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
-            <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
-            <h6 class="card-text sale">{{item.discount * 100}} % Off !</h6>
-
-        </div>
- 
-    </div>
-
-</div>
-
-
-<ngb-pagination [collectionSize]="this.saleItemsService.inventoryItems.length" #numPages [pageSize]="saleitemsPerPage" [(page)]="salecurrentPage" (pageChange)="saleonPageChange(salecurrentPage)">
-<ng-template ngbPaginationPrevious>Prev</ng-template>
-<ng-template ngbPaginationNext>Next</ng-template>
-</ngb-pagination>
-
-<app-item-modal [title]="this.saleselectedItem.itemName" [src]="this.saleselectedItem.imageURL"
-[description]="this.saleselectedItem.description" [quantity]="this.saleselectedItem.quantity" [id]="this.saleselectedItem.id" [category]="this.saleselectedItem.category"></app-item-modal>
-
-<br>
-<br>

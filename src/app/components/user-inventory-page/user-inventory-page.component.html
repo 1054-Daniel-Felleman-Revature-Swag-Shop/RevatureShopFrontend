@@ -1,58 +1,189 @@
-
-
-
 <div class="title-and-inventory-grid" name="top">
 
   <div class="searchBar">
-    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a product">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+      placeholder="&#61442;  Start searching for a product">
   </div>
 
-        <div class="display-featured">
-          <app-display-featured></app-display-featured>
-        </div>
-        <div class ="app-display-sale">
-          <app-display-sale></app-display-sale>
-        </div>
+  <div class="featured-title-and-inventory-grid" name="featured">
 
-
-
-        <div class = "filtersAndTitle">
-
-
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="sortMode" (change)="applyAllFiltering()" style="border-radius: 4px; width:165px; margin-right: 25px;">
-                <option value="id asc">Sort by</option>
-                <option value="price asc">Price (low to high)</option>
-                <option value="price desc">Price (high to low)</option>
-                <option value="name asc">Item name (A to Z)</option>
-                <option value="name desc">Item name (Z to A)</option>
-              </select>
-
-
-              <div style="display: flex; flex-direction: row-reverse;">
-                  <div class="form-check" style="margin-right: 20px; margin-left: 12px;">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="outOfStockChecked" (change)="outOfStockChecked = !outOfStockChecked; applyAllFiltering();">
-                    <label class="form-check-label" for="flexCheckChecked" style="margin-top: 3px;">
-                      Out of stock
-                    </label>
-                  </div>
-                  <div class="form-check" style="margin-left: 25px;">
-                    <!--<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="inStockChecked" >-->
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="inStockChecked" (change)="inStockChecked = !inStockChecked; applyAllFiltering();" >
-                    <label class="form-check-label" for="flexCheckDefault" style="margin-top: 3px;">
-                      In Stock
-                    </label>
-                  </div>
+    <div class="featuredTitle">
+    
+        {{featuredcategoryOfItems}}
+    
+    </div>
+    
+    <div class="featured-grid" style="margin-top: 20px;" >
+    
+    
+        <div *ngFor="let item of this.featuredItemsFiltered  | slice: featuredpageSize | slice: 0: featureditemsPerPage | filter: featuredsearchText"
+         class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
+         [ngClass]="{'inStockItem' : item.quantity > 0}">
+    
+            <div class="imageContainer" style="overflow: hidden;">
+                <img class="card-img-top" src = "{{itemImagesURL+'/images/'+item.itemName+'.png'}}" alt="Item image">
             </div>
-
-              <div class="inventoryTitle">
-
-                {{categoryOfItems}}
-
-              </div>
-
-
-
+    
+            <!-- Mask applied over image when hovered over-->
+            <div class="mask"></div>
+    
+    
+            <div class="card-body" style="text-align: center;">
+    
+    
+                <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
+                <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
+    
+            </div>
+            
         </div>
+    
+    </div>
+    
+    
+    <ngb-pagination [collectionSize]="(this.featuredItemsFiltered.length / featureditemsPerPage) + 2" #numPages [pageSize]="featureditemsPerPage" [(page)]="featuredcurrentPage" (pageChange)="featuredonPageChange(featuredcurrentPage)">
+    <ng-template ngbPaginationPrevious>Prev</ng-template>
+    <ng-template ngbPaginationNext>Next</ng-template>
+    </ngb-pagination>
+    </div>
+    
+    <br>
+    <br>
+
+
+
+    <div class="sale-title-and-inventory-grid" name="sale">
+
+      <div class="saleTitle">
+      
+          {{salecategoryOfItems}}
+      
+      </div>
+      
+      <div class="sale-grid" style="margin-top: 20px;" >
+      
+      
+          <div *ngFor="let item of this.saleItemsFiltered  | slice: salepageSize | slice: 0: saleitemsPerPage | filter: salesearchText"
+              class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
+              [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity == 0}">
+      
+              <div class="imageContainer" style="overflow: hidden;">
+                  <img class="card-img-top" src = "{{itemImagesURL+'/images/'+item.itemName+'.png'}}" alt="Item image">
+              </div>
+      
+              <!-- Mask applied over image when hovered over-->
+              <div class="mask"></div>
+      
+      
+              <div class="card-body" style="text-align: center;">
+      
+      
+                  <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
+                  <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
+                  <h6 class="card-text sale">{{item.discount * 100}} % Off</h6>
+      
+              </div>
+       
+          </div>
+      
+      </div>
+      
+      
+      <ngb-pagination [collectionSize]="(this.saleItemsFiltered.length / saleitemsPerPage) + 2" #numPages [pageSize]="saleitemsPerPage" [(page)]="salecurrentPage" (pageChange)="saleonPageChange(salecurrentPage)">
+      <ng-template ngbPaginationPrevious>Prev</ng-template>
+      <ng-template ngbPaginationNext>Next</ng-template>
+      </ngb-pagination>
+      </div>
+      
+      <br>
+      <br>
+
+
+
+
+      <div class="popular-title-and-inventory-grid" name="popular">
+
+        <div class="popularTitle">
+        
+            {{popularcategoryOfItems}}
+        
+        </div>
+        
+        <div class="popular-grid" style="margin-top: 20px;" >
+        
+        
+            <div *ngFor="let item of this.popularItemsFiltered  | slice: popularpageSize | slice: 0: popularitemsPerPage | filter: popularsearchText"
+             class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
+             [ngClass]="{'inStockItem' : item.quantity > 0}">
+        
+                <div class="imageContainer" style="overflow: hidden;">
+                    <img class="card-img-top" src = "{{itemImagesURL+'/images/'+item.itemName+'.png'}}" alt="Item image">
+                </div>
+        
+                <!-- Mask applied over image when hovered over-->
+                <div class="mask"></div>
+        
+        
+                <div class="card-body" style="text-align: center;">
+        
+        
+                    <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
+                    <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
+        
+                </div>
+                
+            </div>
+        
+        </div>
+        
+        
+        <ngb-pagination [collectionSize]="(this.popularItemsFiltered.length / popularitemsPerPage) + 2" #numPages [pageSize]="popularitemsPerPage" [(page)]="popularcurrentPage" (pageChange)="popularonPageChange(popularcurrentPage)">
+        <ng-template ngbPaginationPrevious>Prev</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+        </ngb-pagination>
+        </div>
+        
+        <br>
+        <br>
+
+  <div class="filtersAndTitle">
+
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="sortMode"
+      (change)="applyAllFiltering()" style="border-radius: 4px; width:165px; margin-right: 25px;">
+      <option value="id asc">Sort by</option>
+      <option value="price asc">Price (low to high)</option>
+      <option value="price desc">Price (high to low)</option>
+      <option value="name asc">Item name (A to Z)</option>
+      <option value="name desc">Item name (Z to A)</option>
+    </select>
+
+    <div style="display: flex; flex-direction: row-reverse;">
+      <div class="form-check" style="margin-right: 20px; margin-left: 12px;">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="outOfStockChecked"
+          (change)="outOfStockChecked = !outOfStockChecked; applyAllFiltering();">
+        <label class="form-check-label" for="flexCheckChecked" style="margin-top: 3px;">
+          Out of stock
+        </label>
+      </div>
+      <div class="form-check" style="margin-left: 25px;">
+        <!--<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="inStockChecked" >-->
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="inStockChecked"
+          (change)="inStockChecked = !inStockChecked; applyAllFiltering();">
+        <label class="form-check-label" for="flexCheckDefault" style="margin-top: 3px;">
+          In Stock
+        </label>
+      </div>
+    </div>
+
+    <div class="inventoryTitle">
+
+      {{categoryOfItems}}
+
+    </div>
+
+
+
+  </div>
 
 
 
@@ -60,40 +191,42 @@
 
   <!-- class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal"> -->
 
-        <div class="inventory-grid" style="margin-top: 20px;" >
+  <div class="inventory-grid" style="margin-top: 20px;">
 
 
-                    <div *ngFor="let item of this.inventoryItemsFiltered | filter: searchText | paginate: {itemsPerPage: 12, currentPage: p}"
-                     class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
-                     [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity === 0}">
+    <div
+      *ngFor="let item of this.inventoryItemsFiltered | filter: searchText | paginate: {itemsPerPage: 12, currentPage: p}"
+      class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
+      [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity === 0}">
 
-                        <div class="imageContainer" style="overflow: hidden;">
-                          <img class="card-img-top" src = "{{itemImagesURL+'/images/'+item.itemName+'.png'}}" alt="Item image">
-                        </div>
+      <div class="imageContainer" style="overflow: hidden;">
+        <img class="card-img-top" src="{{itemImagesURL+'/images/'+item.itemName+'.png'}}" alt="Item image">
+      </div>
 
-                        <!-- Mask applied over image when hovered over-->
-                        <div class="mask"></div>
-
-
-                        <div class="card-body" style="text-align: center;">
+      <!-- Mask applied over image when hovered over-->
+      <div class="mask"></div>
 
 
-                            <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
-                            <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}} RevCoins</h5>
-
-                        </div>
-
-                    </div>
+      <div class="card-body" style="text-align: center;">
 
 
-        </div>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <h5 class="card-title title two-line-text" style="font-size: 21px;">{{item.itemName}}</h5>
+        <h5 class="card-text price" style="margin-top: 15px; font-size: 18px;">{{item.itemPrice * (1-item.discount)}}
+          RevCoins</h5>
+
+      </div>
+
+    </div>
+
+
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 
 <app-item-modal [title]="this.selectedItem.itemName" [src]="this.selectedItem.imageURL"
-[description]="this.selectedItem.description" [quantity]="this.selectedItem.quantity" [id]="this.selectedItem.id"
-[category]="this.selectedItem.category"></app-item-modal>
+  [description]="this.selectedItem.description" [quantity]="this.selectedItem.quantity" [id]="this.selectedItem.id"
+  [category]="this.selectedItem.category"></app-item-modal>
 
 <br>
 <br>

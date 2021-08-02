@@ -25,10 +25,21 @@
 .col:last-child {
   margin-right: 0;
 }
-.holding-container{
+.holding-container {
     margin: 12em 10em 10em;
 }
-.height90{
+.height90 {
     min-height: 90vh;
 }
 
+.orange {
+  background-color: #F26925;
+}
+
+.blue {
+  background-color: #72A4C2;
+}
+
+.red {
+  color: red;
+}

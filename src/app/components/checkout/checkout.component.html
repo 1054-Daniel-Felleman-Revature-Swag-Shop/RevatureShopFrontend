@@ -1,10 +1,10 @@
 <div class="holding-container">
+    <h3 *ngIf="failedCheckout" class="red">Failed to checkout cart. Please try again later.</h3>
     <mat-card mat-typography class="shipping-card">
         <mat-card-header>
             <mat-card-title>Shipping Information</mat-card-title>
             <mat-card-subtitle>Your Current Points: {{account.points}}</mat-card-subtitle>
             <mat-card-subtitle>Your points after transaction: {{pointsAfterMath}}</mat-card-subtitle>
-
         </mat-card-header>
         <mat-card-content>
             <mat-vertical-stepper [linear]="true" #stepper>
@@ -27,7 +27,7 @@
                             </mat-error>
                         </mat-form-field>
                         <div>
-                            <button mat-button matStepperNext>Next</button>
+                            <button class="orange" mat-button matStepperNext>Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -63,8 +63,8 @@
                             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
                         </mat-form-field>
                         <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button matStepperNext>Next</button>
+                            <button class="blue" mat-button matStepperPrevious>Back</button>
+                            <button class="orange" mat-button matStepperNext>Next</button>
                         </div>
                     </form>
                 </mat-step>
@@ -74,8 +74,8 @@
                         <mat-label>Any additional delivery instructions</mat-label>
                         <textarea matInput formControlName="moreInfo"></textarea>
                     </mat-form-field>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext (click)="checkout()">Place Your Order</button>
+                    <button class="blue" mat-button matStepperPrevious>Back</button>
+                    <button class="orange" mat-button matStepperNext (click)="checkout()">Place Your Order</button>
                 </mat-step>
             </mat-vertical-stepper>
         </mat-card-content>

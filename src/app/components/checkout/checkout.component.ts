@@ -78,7 +78,7 @@ export class CheckoutComponent {
         this.thirdFormGroup = this.fb.group({
             moreInfo: null,
         })
-        //NOT EXACTLY SURE IF THIS WORKS THIS WAY,
+        // NOT EXACTLY SURE IF THIS WORKS THIS WAY,
         // HOPEFULLY THESE FORMS OVERWRITE THE CORRECT INFORMATION IN THE SERVICE OBJECT
         this.firstFormGroup.valueChanges.subscribe(form => {
             this.co.checkOutInfo = form;
@@ -91,16 +91,19 @@ export class CheckoutComponent {
         })
     }
 
+    failedCheckout: boolean = false;
+
     checkout() {
-        this.cs.checkoutCart(this.checkoutCart).subscribe(()=>{
-
+        this.cs.checkoutCart(this.checkoutCart).subscribe((value)=>{
             this.as.account && this.as.getUserInfo(this.as.account.email);
+            if (value == -1) {
+                this.failedCheckout = true;
+            } else {
+                this.as.account!.points = this.pointsAfterMath;
+                this.cs.totalItems = 0;
+                this.router.navigate(['confirmCheckout']).then(r =>{});
+            }
         });
-        // @ts-ignore
-        this.as.account.points = this.pointsAfterMath;
-       this.cs.totalItems = 0;
-    this.router.navigate(['confirmCheckout']).then(r =>{});
-
     }
 
     get account(): Account {

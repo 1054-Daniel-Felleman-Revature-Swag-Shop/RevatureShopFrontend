@@ -69,4 +69,10 @@ export class HttpCartService {
     checkoutCart(userCart: any): Observable<any> {
         return this.http.post("http://" + window.location.hostname + ":9001/commercems/commerce/checkoutcart", userCart, this.httpOptionsJSON);
     }
+
+    orderHistory(email: string): Observable<any> {
+        return this.http.get("http://" + window.location.hostname + ":9001/commerce//myOrderHistory/" + email, this.httpOptionsJSON);
+    }
+
+    
 }

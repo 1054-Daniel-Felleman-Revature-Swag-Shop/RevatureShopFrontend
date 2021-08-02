@@ -27,9 +27,9 @@ export class ItemModalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
     }
 
+    
     addToCart(): void {
         this.httpItemModalService.getItemById(this.id).subscribe((item) => {
             this.httpItemModalService.addItemToCart(item, this.loggedShopper, Math.floor(this.selectedAmount));

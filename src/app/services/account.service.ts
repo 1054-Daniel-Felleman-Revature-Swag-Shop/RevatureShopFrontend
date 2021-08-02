@@ -101,5 +101,18 @@ export class AccountService {
     }
 
 
+    getPurchaseHistory(email : string){
+        const body = new HttpParams()
+            .set('email', email);
+        this.http.post<Account>(this.endpoint + 'dummylogin',
+            body.toString(),
+            {
+                headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+            }
+        ).subscribe(account => {
+            this._account = account;
+        });
+    }
+
 
 }

@@ -12,8 +12,11 @@ import { AdminNewInventoryPageComponent } from "./components/admin-new-inventory
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {CheckoutConfirmationPageComponent} from "./components/checkout-confirmation-page/checkout-confirmation-page.component";
 import {AdminAddPointsComponent} from "./components/admin-add-points/admin-add-points.component";
+import { ViewPreviousOrdersComponent } from './components/view-previous-orders/view-previous-orders.component';
 
 const routes: Routes = [
+    {path: 'previousOrder', component: ViewPreviousOrdersComponent},
+    
     {path: 'shop/:category', component: UserInventoryPageComponent, canActivate: [AuthGuard]},
     {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
     {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},

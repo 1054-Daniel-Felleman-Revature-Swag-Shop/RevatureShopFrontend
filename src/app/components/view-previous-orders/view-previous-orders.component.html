@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="card text-center" fxFlexAlign="center">
+        <h2 class="card-header">
+            Previous Order
+        </h2>
+
+    </div>
+    <div class="card-body text-center">
+        <p>
+
+        </p>
+        <p>
+
+        </p>
+
+
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date Ordered</th>
+                <th scope="col">Purchase ID</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Status</th>
+                <th scope="col">Buy Again</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let previousOrder of previousOrders">
+                <!-- call function then put info here -->
+                <td>{{previousOrder.purchaseDate}}</td>
+                <td>{{previousOrder.purchaseId}}</td>
+
+                <td>
+                    <div style="display: flex;">
+
+
+                        <div class="col-md-3"><img class="img-fluid"
+                                src="{{itemImagesURL + previousOrder.itemName + '.png'}}" alt="no image">
+                        </div>
+                        
+                        <div class="col-md-9">
+                            {{previousOrder.itemName}}
+                        </div>
+                    </div>
+                </td>
+
+                <td>${{previousOrder.itemPrice}}</td>
+                <td>{{previousOrder.status}}</td>
+                <td>
+                    <button class="btn btn-rev" (click)="orderAgian(previousOrder.itemId)">
+                        Order again
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

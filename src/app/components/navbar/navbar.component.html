@@ -22,7 +22,6 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 2px 17px rgba(0, 0, 0, 0
                         <li *ngFor="let category of this.navbarService.clothingCategories">
                             <a class="dropdown-item" [routerLink]="['/shop',category]">{{category}}</a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -62,6 +61,7 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 2px 17px rgba(0, 0, 0, 0
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountOptions">
                         <li><a class="dropdown-item" routerLink="user">My account</a></li>
+                        <li><a class="dropdown-item" routerLink="previousOrder">View Previous Orders</a></li>
                         <li><a class="dropdown-item" (click)="accountService.logout()">Sign out</a></li>
                     </ul>
                 </li>

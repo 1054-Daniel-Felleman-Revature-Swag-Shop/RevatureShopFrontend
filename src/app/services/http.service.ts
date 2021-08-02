@@ -46,5 +46,9 @@ checkoutCart(shopper:string): Observable<number> {
     return this.http.post<number>(this.commerceURL + 'checkoutcart',body);
 }
 
+orderHistory(email: string): Observable<any> {
+    let url = "http://" + window.location.hostname + ":9001/commerce"
 
+    return this.http.get<any>(url + "/myOrderHistory/" + email);
+}
 }
