@@ -1,0 +1,11 @@
+To run the current version of the front end of the Revature Swag Shop
+We collectively were using VScode as an IDE
+through the terminal we used the command npm install to allow us
+to utilize Angular
+
+Create a folder on your local machine to hold the front and backend projects.
+then you can git bash into those respective folders and pull from git hub for the front end
+and short of any refactoring for depricated code after doing so
+run the ng serve command in the terminal
+
+The web application will then default to localhost:4200.
