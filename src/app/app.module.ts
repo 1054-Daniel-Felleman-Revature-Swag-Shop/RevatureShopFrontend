@@ -32,6 +32,7 @@ import { DisplayFeaturedComponent } from './components/display-featured/display-
 import {CarouselModule} from 'primeng/carousel';
 import { ViewPreviousOrdersComponent } from './components/view-previous-orders/view-previous-orders.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DisplayPopularComponent } from './components/display-popular/display-popular.component';
 
 @NgModule({
     declarations: [
@@ -58,8 +59,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         CheckoutConfirmationPageComponent,
         DisplaySaleComponent,
         DisplayFeaturedComponent,
-
-        ViewPreviousOrdersComponent
+        ViewPreviousOrdersComponent,
+        DisplayPopularComponent
     ],
     imports: [
         BrowserModule,

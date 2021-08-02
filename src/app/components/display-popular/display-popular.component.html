@@ -1,0 +1,23 @@
+<div class="banner">
+    <h1 class="title">Popular Items</h1>
+    <p class="message">Check out our awesome items!</p>
+    <p-carousel [value]="popularItemsFiltered" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+        [circular]="true" [autoplayInterval]="5000">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <img src="{{itemImagesURL+'/images/'+product.itemName+'.png'}}" [alt]="product.itemName"
+                            class="product-image" />
+                    </div>
+                    <div>
+                        <h4 class="p-mb-1">{{product.itemName}}</h4>
+                        <h6 class="p-mt-0 p-mb-3">{{product.itemPrice}} RevCoins</h6>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

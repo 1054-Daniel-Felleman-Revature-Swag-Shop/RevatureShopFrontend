@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service'
-import { DisplayFeaturedService } from '../../services/display-featured.service';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service';
+import { HttpUserInventoryPageService } from '../../services/http-user-inventory-page.service';
 
 @Component({
   selector: 'app-display-featured',
@@ -30,7 +29,7 @@ export class DisplayFeaturedComponent implements OnInit {
   constructor(private _featuredItemsService : InventoryItemsService,
     private router : Router,
     private route : ActivatedRoute,
-    private displayFeaturedService : DisplayFeaturedService) {
+    private httpUserInventoryPageService : HttpUserInventoryPageService) {
 
    }
 
@@ -46,7 +45,7 @@ export class DisplayFeaturedComponent implements OnInit {
 
   fetchfeaturedItemListByCategory() {
 
-    this.displayFeaturedService.getInventoryItemsByFeatured().subscribe(
+    this.httpUserInventoryPageService.getInventoryItemsByFeatured().subscribe(
       itemsList => {
         this._featuredItemsService.inventoryItems = this.filterItems(itemsList);
         this.filterfeaturedListByStock();

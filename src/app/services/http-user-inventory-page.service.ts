@@ -55,4 +55,25 @@ export class HttpUserInventoryPageService {
 
      return couldUpdate;
    }
+
+   getInventoryItemsByFeatured() : Observable<InventoryItem[]> {
+
+      var items: Observable<InventoryItem[]> =  this.http.get<InventoryItem[]>(this.baseServerURL + "/api/inventory/view/getfeatured", this.httpOptionsJSON);
+      return items;
+ 
+   }
+
+   getInventoryItemsByOnSale() : Observable<InventoryItem[]> {
+
+      var items: Observable<InventoryItem[]> =  this.http.get<InventoryItem[]>(this.baseServerURL + "/api/inventory/view/onsale", this.httpOptionsJSON);
+      return items;
+ 
+   }
+
+   getInventoryItemsByPopular() : Observable<InventoryItem[]> {
+
+      var items: Observable<InventoryItem[]> =  this.http.get<InventoryItem[]>(this.baseServerURL + "/api/inventory//view/mostpopular", this.httpOptionsJSON);
+      return items;
+ 
+   }
 }

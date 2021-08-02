@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service'
-import { DisplaySaleService } from '../../services/display-sale.service';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service';
+import { HttpUserInventoryPageService } from '../../services/http-user-inventory-page.service';
 
 @Component({
   selector: 'app-display-sale',
@@ -29,7 +28,7 @@ export class DisplaySaleComponent implements OnInit {
   constructor(private _saleItemsService : InventoryItemsService,
     private router : Router,
     private route : ActivatedRoute,
-    private displaySaleService : DisplaySaleService) {
+    private httpUserInventoryPageService : HttpUserInventoryPageService) {
 
    }
 
@@ -45,7 +44,7 @@ export class DisplaySaleComponent implements OnInit {
 
   fetchsaleItemListByCategory() {
 
-    this.displaySaleService.getInventoryItemsByOnSale().subscribe(
+    this.httpUserInventoryPageService.getInventoryItemsByOnSale().subscribe(
       itemsList => {
         this.saleItemsService.inventoryItems = itemsList;
         this.filtersaleListByStock();

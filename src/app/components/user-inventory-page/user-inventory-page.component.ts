@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service'
+import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service';
 import { HttpUserInventoryPageService } from '../../services/http-user-inventory-page.service';
 
 
@@ -39,6 +39,9 @@ export class UserInventoryPageComponent implements OnInit {
     // Get shop category (clothing, accessories, etc.)
     //var category = this.route.snapshot.paramMap.get('category');
 
+    this.fetchfeaturedItemListByCategory();
+    this.fetchsaleItemListByCategory();
+    this.fetchpopularItemListByCategory();
 
     this.route.params.subscribe(params => {
 
@@ -82,9 +85,6 @@ export class UserInventoryPageComponent implements OnInit {
 
   }
 
-  pageSelected() {
-    window.scrollTo(0,0);
-  }
 
   filterListByStock() {
 
@@ -156,4 +156,159 @@ export class UserInventoryPageComponent implements OnInit {
     this.applySortFilters();
   }
 
+
+
+
+
+
+
+
+
+  featuredcategoryOfItems : string = 'Featured Items';
+  featuredItemsFiltered : InventoryItem[] = [];
+
+  featuredcurrentPage = 1;
+  featureditemsPerPage = 3;
+  featuredpageSize: number = 0;
+
+  featuredinStockChecked : boolean = true;
+
+
+  featuredsearchText='';
+
+
+  get featuredItemsService() {
+    return this._inventoryItemsService;
+  }
+
+  fetchfeaturedItemListByCategory() {
+
+    this.httpUserInventoryService.getInventoryItemsByFeatured().subscribe(
+      itemsList => {
+        this.featuredItemsService.inventoryItems = itemsList;
+        this.filterfeaturedListByStock();
+      }
+    )
+  }
+
+
+  filterfeaturedListByStock() {
+
+    this.featuredItemsFiltered = this._inventoryItemsService.inventoryItems.filter(element => {
+      return (this.featuredinStockChecked && element.quantity > 0);
+  });
+
+  }
+
+  public featuredonPageChange(pageNum: number): void {
+    this.featuredpageSize = this.featureditemsPerPage*(pageNum - 1);
+  }
+
+  public featuredchangePagesize(num: number): void {
+  this.featureditemsPerPage = this.featuredpageSize + num;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  salecategoryOfItems : string = 'On Sale';
+  saleItemsFiltered : InventoryItem[] = [];
+
+  salecurrentPage = 1;
+  saleitemsPerPage = 3;
+  salepageSize: number = 0;
+
+  saleinStockChecked : boolean = true;
+
+
+  salesearchText='';
+
+
+  get saleItemsService() {
+    return this._inventoryItemsService;
+  }
+
+  fetchsaleItemListByCategory() {
+
+    this.httpUserInventoryService.getInventoryItemsByOnSale().subscribe(
+      itemsList => {
+        this.saleItemsService.inventoryItems = itemsList;
+        this.filtersaleListByStock();
+      }
+    )
+  }
+
+  filtersaleListByStock() {
+
+    this.saleItemsFiltered = this._inventoryItemsService.inventoryItems.filter(element => {
+      return (this.saleinStockChecked && element.quantity > 0);
+  });
+
+  }
+
+
+  public saleonPageChange(pageNum: number): void {
+    this.salepageSize = this.saleitemsPerPage*(pageNum - 1);
+  }
+
+  public salechangePagesize(num: number): void {
+  this.saleitemsPerPage = this.salepageSize + num;
+}
+
+
+
+
+
+popularcategoryOfItems : string = 'Popular Items';
+popularItemsFiltered : InventoryItem[] = [];
+
+popularcurrentPage = 1;
+popularitemsPerPage = 3;
+popularpageSize: number = 0;
+
+popularinStockChecked : boolean = true;
+
+
+popularsearchText='';
+
+
+  get popularItemsService() {
+    return this._inventoryItemsService;
+  }
+
+  fetchpopularItemListByCategory() {
+
+    this.httpUserInventoryService.getInventoryItemsByPopular().subscribe(
+      itemsList => {
+        this.popularItemsService.inventoryItems = itemsList;
+        this.filterpopularListByStock();
+      }
+    )
+  }
+
+
+  filterpopularListByStock() {
+
+    this.popularItemsFiltered = this._inventoryItemsService.inventoryItems.filter(element => {
+      return (this.popularinStockChecked && element.quantity > 0);
+  });
+
+  }
+
+  public popularonPageChange(pageNum: number): void {
+    this.popularpageSize = this.popularitemsPerPage*(pageNum - 1);
+  }
+
+  public popularchangePagesize(num: number): void {
+  this.popularitemsPerPage = this.popularpageSize + num;
+}
 }
