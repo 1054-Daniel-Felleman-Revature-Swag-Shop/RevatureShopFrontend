@@ -46,7 +46,7 @@ export class CheckoutComponent {
             "myShopper": "",
             stockItemMap: {}
         }
-        let price:number=0;
+        let price:number = 0;
         this.cs.getCart(this.loggedShopper).subscribe(cart=>{
             this.checkoutCart=cart;
             Object.keys(this.checkoutCart.stockItemMap).map(Number).forEach((id) => {
