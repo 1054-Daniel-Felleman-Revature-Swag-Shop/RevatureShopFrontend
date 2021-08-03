@@ -1,4 +1,4 @@
-# Revature Swag Shop: Back End
+# Revature Swag Shop: Front End
 
 The Revature Swag shop is an employee accessible merchandise store that was built from scratch and uses a microservice architecture. As a revature employee, you can login to the shop and view your RevCoins (the shop currency) history. An employee can exchange these RevCoins for the various goods the shop offers.
 
@@ -14,8 +14,8 @@ With the Swag Shop, users can log in and add items to their cart they wish to pu
 
 ---
 
-### Sign in with a with a pre loaded Employee email.
-![Login Page](./src/assets/images/LoginPage.png)
+### Sign in with a with a Employee email.
+![Login Page](./src/assets/images/login-page.png)
 ---
 
 
@@ -23,13 +23,15 @@ With the Swag Shop, users can log in and add items to their cart they wish to pu
 
 ---
 
-Upon Login the user will be greeted with a home page banner informing the user about the shop opening sale. From this page a user can navigate to the shop Catalog to view all items or select which items to view based on the drop down categories provided.
-![Admin Options](./src/assets/images/ClothingDropdown.png)
+Upon Login the user will be greeted with a few featured items, items on sale and popular items.
 
-![Catalog Filters](./src/assets/images/CatalogNFilters.png)
+![Admin Options](./src/assets/images/home-page.png)
 
-Users can then select Items to view details and Add them to their cart.
-![Item Modal](./src/assets/images/ItemModal.png)
+Added a search bar to the catalog to allow users to find items they are looking for. Also added on sale items, popular items, featured items section to the catalog page.
+![Catalog Filters](./src/assets/images/catalog-page.png)
+
+Users can then select Items to view details and Add them to their cart. Sizes for shirts can now be selected.
+![Item Modal](./src/assets/images/modal-image.png)
 
 Carts can be accessed and edited, or users can proceed to checkout.
 ![Shopping Cart](./src/assets/images/CartPreCheckout.png)
@@ -49,9 +51,9 @@ The user can also check their previous orders from the "View Previous Orders" pa
 ---
 
 As an admin, you have all the same functionality as a User with the additional features of updating stock item quantities, assigning RevCoins to a shop user, and adding a new item to the stock. These options can be seen under the ADMIN Dropdown Tab.
-![Admin Options](./src/assets/images/AdminLandingDropdown.png)
+![Admin Options](./src/assets/images/admin-main.png)
 
-![Admin Update Stock](./src/assets/images/AdminUpdateStock.png)
+![Admin Update Stock](./src/assets/images/admin-update-item.png)
 
 ![Admin Create Item](./src/assets/images/AdminCreateItem.png)
 
