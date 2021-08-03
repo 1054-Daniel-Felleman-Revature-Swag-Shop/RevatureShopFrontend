@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryItem, InventoryItemsService } from '../../services/inventory-items.service';
 import { HttpUserInventoryPageService } from '../../services/http-user-inventory-page.service';
+import { DisplayPopularComponent } from '../display-popular/display-popular.component';
 
 
 @Component({
@@ -30,10 +31,13 @@ export class UserInventoryPageComponent implements OnInit {
   constructor(private _inventoryItemsService : InventoryItemsService,
     private router : Router,
     private route : ActivatedRoute,
-    private httpUserInventoryService : HttpUserInventoryPageService) {
+    private httpUserInventoryService : HttpUserInventoryPageService,
+    private popularItems : DisplayPopularComponent) {
 
-   }
+  }
 
+  numItems = this.popularItems.popularItemsService.inventoryItems.length;
+  
   ngOnInit(): void {
 
     // Get shop category (clothing, accessories, etc.)
