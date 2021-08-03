@@ -78,7 +78,7 @@ import { DisplayPopularComponent } from './components/display-popular/display-po
         NgxPaginationModule,
         CarouselModule
     ],
-    providers: [],
+    providers: [DisplayPopularComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {
