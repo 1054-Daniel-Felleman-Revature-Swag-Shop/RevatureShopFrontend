@@ -5,16 +5,6 @@
         </h2>
 
     </div>
-    <div class="card-body text-center">
-        <p>
-
-        </p>
-        <p>
-
-        </p>
-
-
-    </div>
 </div>
 
 
@@ -24,6 +14,7 @@
             <tr>
                 <th scope="col">Date Ordered</th>
                 <th scope="col">Purchase ID</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Description</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Status</th>
@@ -36,6 +27,7 @@
                 <!-- call function then put info here -->
                 <td>{{previousOrder.purchaseDate}}</td>
                 <td>{{previousOrder.purchaseId}}</td>
+                <td>{{previousOrder.itemQuantity}}</td>
 
                 <td>
                     <div style="display: flex;">
@@ -51,7 +43,10 @@
                     </div>
                 </td>
 
-                <td>${{previousOrder.itemPrice}}</td>
+                <td>
+                    <img class="rev_coin" src="../../../assets/images/rev_coin.png" alt="">
+                    {{previousOrder.itemPrice.toFixed(2)}}
+                </td>
                 <td>{{previousOrder.status}}</td>
                 <td>
                     <button class="btn btn-rev" (click)="orderAgian(previousOrder.itemId)">
