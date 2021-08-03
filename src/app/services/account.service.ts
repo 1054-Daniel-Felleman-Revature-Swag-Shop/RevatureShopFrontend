@@ -13,6 +13,7 @@ export interface Account {
     points: number;
     role: Role;
     pointHistory: Order[];
+    eSub: boolean;
 }
 
 export enum Role {
@@ -114,5 +115,7 @@ export class AccountService {
         });
     }
 
-
+    updateEmailSubscription(subbed: boolean) {
+        this.http.post<Account>(`${this.endpoint}subscribe/${this.account?.email}/${this.account?.eSub}`, "").subscribe(value => console.log(value));
+    }
 }

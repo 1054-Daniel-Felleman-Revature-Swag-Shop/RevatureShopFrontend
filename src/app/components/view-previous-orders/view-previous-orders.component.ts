@@ -52,7 +52,6 @@ export class ViewPreviousOrdersComponent implements OnInit {
           let itemName = this.previousOrders[i].itemName;
           this.httpCartService.getItemByName(itemName).subscribe((item) => {
             this.previousOrders[i].itemId = item.id;
-            console.log(this.previousOrders)
           });
 
 

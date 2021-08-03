@@ -8,6 +8,7 @@ import {Order, UserPageService} from "../../services/user-page.service";
     styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
+    buttonText: string = "Subscribe to Emails";
     // @ts-ignore
     historyList: Order[];
 
@@ -22,5 +23,12 @@ export class UserPageComponent implements OnInit {
 
     get accountInfo() {
         return <Account>this.accountService.account;
+    }
+
+    toggleEmailSubscription(): void {
+        this.accountInfo.eSub = !this.accountInfo.eSub;
+        if (this.accountInfo.eSub) this.buttonText = "Unsubscribe from Emails";
+        else this.buttonText = "Subscribe to Emails";
+        this.accountService.updateEmailSubscription(this.accountInfo.eSub);
     }
 }
