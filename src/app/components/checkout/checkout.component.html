@@ -3,8 +3,14 @@
     <mat-card mat-typography class="shipping-card">
         <mat-card-header>
             <mat-card-title>Shipping Information</mat-card-title>
-            <mat-card-subtitle>Your Current Points: {{account.points}}</mat-card-subtitle>
-            <mat-card-subtitle>Your points after transaction: {{pointsAfterMath}}</mat-card-subtitle>
+            <mat-card-subtitle>Your Current Points: 
+                <img class="rev_coin" src="../../../assets/images/rev_coin.png" alt="">
+                {{account.points.toFixed(2)}}
+            </mat-card-subtitle>
+            <mat-card-subtitle>Your points after transaction: 
+                <img class="rev_coin" src="../../../assets/images/rev_coin.png" alt="">
+                {{pointsAfterMath.toFixed(2)}}
+            </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <mat-vertical-stepper [linear]="true" #stepper>

@@ -1,4 +1,14 @@
-    .banner {
+  .rev_coin {
+    display: inline-block;
+    width: 28px;
+    /* height: 50%; */
+    max-height: 28px;
+    position: relative;
+    top: -2px;
+    left: 6px;
+  }
+
+  .banner {
       display: flex;
       align-items: center;
       flex-direction: column;

@@ -1,3 +1,13 @@
+.rev_coin {
+    display: inline-block;
+    width: 26px;
+    /* height: 50%; */
+    max-height: 26px;
+    position: relative;
+    top: -2px;
+    left: 6px;
+}
+
 .pointTrackerMainBox {
     
     
@@ -30,7 +40,7 @@ height:0px;
     color:rgb(255, 255, 255);
     font-size: 15px;
     border-radius: 0.85em;
-    width:70px;
+    width:100px;
 
     margin-top:-0.2%;
     margin-right:0.1%;

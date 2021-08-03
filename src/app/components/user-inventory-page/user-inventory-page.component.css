@@ -1,7 +1,11 @@
 .rev_coin {
     display: inline-block;
-    width: 32px;
-    height: 50%;
+    width: 28px;
+    /* height: 50%; */
+    max-height: 28px;
+    position: relative;
+    top: -4px;
+    left: 6px;
 }
 
 .inStockItem {
