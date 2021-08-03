@@ -116,8 +116,6 @@ export class AccountService {
     }
 
     updateEmailSubscription(subbed: boolean) {
-        console.log(`Updating email subscription for ${this.account?.email} to ${this.account?.eSub}`);
-        console.log(`Sending POST request to ${this.endpoint}subscribe/${this.account?.email}/${this.account?.eSub}`)
         this.http.post<Account>(`${this.endpoint}subscribe/${this.account?.email}/${this.account?.eSub}`, "").subscribe(value => console.log(value));
     }
 }

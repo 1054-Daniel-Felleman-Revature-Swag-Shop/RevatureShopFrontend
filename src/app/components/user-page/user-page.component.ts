@@ -27,7 +27,6 @@ export class UserPageComponent implements OnInit {
 
     toggleEmailSubscription(): void {
         this.accountInfo.eSub = !this.accountInfo.eSub;
-        console.log(this.accountInfo.eSub);
         if (this.accountInfo.eSub) this.buttonText = "Unsubscribe from Emails";
         else this.buttonText = "Subscribe to Emails";
         this.accountService.updateEmailSubscription(this.accountInfo.eSub);
