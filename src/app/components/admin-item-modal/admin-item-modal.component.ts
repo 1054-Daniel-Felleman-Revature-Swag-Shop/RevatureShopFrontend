@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AdminItemModalComponent implements OnInit {
   
-  itemImagesURL : string = "https://revature-swag-shop-images.s3.us-east-2.amazonaws.com";
+  itemImagesURL : string = "https://rss-images.s3.us-east-2.amazonaws.com";
 
     @Input() title: string = '';
     @Input() src: string = '';

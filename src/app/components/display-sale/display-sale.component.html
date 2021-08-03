@@ -18,9 +18,11 @@
                     <div class="item-wrapper">
                         <h4 class="p-mb-1">{{sale.itemName}}</h4>
                         <span class="price-wrapper">
-                            <h6 class="p-mt-0 p-mb-3 price">{{sale.itemPrice}}</h6>
-                            <h6 class="p-mt-0 p-mb-3">{{sale.itemPrice * (1-sale.discount)|number}} RevCoins
+                            <h6 class="p-mt-0 p-mb-3 price">
+                                <img class="rev_coin" src="../../../assets/images/rev_coin.png" alt="">
+                                {{sale.itemPrice}}
                             </h6>
+                            <h6 class="p-mt-0 p-mb-3">{{sale.itemPrice * (1-sale.discount)|number}} RevCoins</h6>
                         </span>
                     </div>
                 </div>
