@@ -16,7 +16,7 @@
     <div class="featured-grid" style="margin-top: 20px;" >
 
 
-        <div *ngFor="let item of this.featuredItemsFiltered  | slice: featuredpageSize | slice: 0: featureditemsPerPage | filter: featuredsearchText"
+        <div *ngFor="let item of this.featuredItemsFiltered  | paginate: {id: 'p1', itemsPerPage: 3, currentPage: p1}"
          class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
          [ngClass]="{'inStockItem' : item.quantity > 0}">
 
@@ -39,12 +39,7 @@
         </div>
 
     </div>
-
-
-    <ngb-pagination [collectionSize]="(this.featuredItemsFiltered.length / featureditemsPerPage) + 2" #numPages [pageSize]="featureditemsPerPage" [(page)]="featuredcurrentPage" (pageChange)="featuredonPageChange(featuredcurrentPage)">
-    <ng-template ngbPaginationPrevious>Prev</ng-template>
-    <ng-template ngbPaginationNext>Next</ng-template>
-    </ngb-pagination>
+    <pagination-controls (pageChange)="p1 = $event" id="p1"></pagination-controls>
     </div>
 
     <br>
@@ -63,7 +58,7 @@
       <div class="sale-grid" style="margin-top: 20px;" >
 
 
-          <div *ngFor="let item of this.saleItemsFiltered  | slice: salepageSize | slice: 0: saleitemsPerPage | filter: salesearchText"
+          <div *ngFor="let item of this.saleItemsFiltered  | paginate: {id: 'p2', itemsPerPage: 3, currentPage: p2}"
               class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
               [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity == 0}">
 
@@ -87,12 +82,7 @@
           </div>
 
       </div>
-
-
-      <ngb-pagination [collectionSize]="(this.saleItemsFiltered.length / saleitemsPerPage) + 2" #numPages [pageSize]="saleitemsPerPage" [(page)]="salecurrentPage" (pageChange)="saleonPageChange(salecurrentPage)">
-      <ng-template ngbPaginationPrevious>Prev</ng-template>
-      <ng-template ngbPaginationNext>Next</ng-template>
-      </ngb-pagination>
+      <pagination-controls (pageChange)="p2 = $event" id="p2"></pagination-controls>
       </div>
 
       <br>
@@ -112,7 +102,7 @@
         <div class="popular-grid" style="margin-top: 20px;" >
 
 
-            <div *ngFor="let item of this.popularItemsFiltered  | slice: popularpageSize | slice: 0: popularitemsPerPage | filter: popularsearchText"
+            <div *ngFor="let item of this.popularItemsFiltered  | paginate: {id: 'p3', itemsPerPage: 3, currentPage: p3}"
              class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
              [ngClass]="{'inStockItem' : item.quantity > 0}">
 
@@ -135,12 +125,7 @@
             </div>
 
         </div>
-
-
-        <ngb-pagination [collectionSize]="(this.popularItemsFiltered.length / popularitemsPerPage) + 2" #numPages [pageSize]="popularitemsPerPage" [(page)]="popularcurrentPage" (pageChange)="popularonPageChange(popularcurrentPage)">
-        <ng-template ngbPaginationPrevious>Prev</ng-template>
-        <ng-template ngbPaginationNext>Next</ng-template>
-        </ngb-pagination>
+        <pagination-controls (pageChange)="p3 = $event" id="p3"></pagination-controls>
         </div>
 
         <br>
@@ -195,7 +180,7 @@
 
 
     <div
-      *ngFor="let item of this.inventoryItemsFiltered | filter: searchText | paginate: {itemsPerPage: 12, currentPage: p}"
+      *ngFor="let item of this.inventoryItemsFiltered | filter: searchText | paginate: {id:'p', itemsPerPage: 12, currentPage: p}"
       class="card" type="button" data-bs-toggle="modal" data-bs-target="#itemModal" (click)="itemClicked(item)"
       [ngClass]="{'inStockItem' : item.quantity > 0, 'outOfStockItem' : item.quantity === 0}">
 
@@ -220,7 +205,7 @@
 
 
   </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
 </div>
 
 

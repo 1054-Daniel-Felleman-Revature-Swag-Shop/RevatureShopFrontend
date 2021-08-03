@@ -17,6 +17,9 @@ export class UserInventoryPageComponent implements OnInit {
   inventoryItemsFiltered : InventoryItem[] = [];
 
   p = 1;
+  p1 = 1;
+  p2 = 1;
+  p3 = 1;
 
   selectedItem : InventoryItem = new InventoryItem(1,"",1,1, "", "","",0);
   inStockChecked : boolean = true;
