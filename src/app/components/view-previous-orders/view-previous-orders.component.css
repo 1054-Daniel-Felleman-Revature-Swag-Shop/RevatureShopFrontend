@@ -1,3 +1,13 @@
+.rev_coin {
+    display: inline-block;
+    width: 24px;
+    /* height: 50%; */
+    max-height: 24px;
+    position: relative;
+    top: -4px;
+    left: 6px;
+}
+
 .btn-rev {
     background-color: #F26925;
     color: white;
